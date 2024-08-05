@@ -1,0 +1,71 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+import seaborn as sns
+
+data = pd.read_csv('/content/WineQT.csv')
+data.head()
+data.shape
+data.info()
+data.describe()
+
+data.isnull().sum()
+data.nunique()
+
+quality_cnts = data['quality'].value_counts()
+quality_cnts
+
+plt.figure(figsize=(8,6))
+plt.bar(quality_cnts.index, quality_cnts,color = 'red')
+plt.xlabel('Quality')
+plt.ylabel('Count')
+plt.title('Distribution of Wine Quality')
+plt.show()
+
+sns.set(style='dark')
+plt.figure(figsize=(16,8))
+plt.subplot(2,3,1)
+sns.histplot(data['fixed acidity'],bins=20,kde=True)
+plt.title(' Distribution of Fixed Acidity')
+plt.subplot(2,3,2)
+sns.histplot(data['volatile acidity'],bins=20,kde=True)
+plt.title(' Distribution of Volatile Acidity')
+plt.subplot(2,3,3)
+sns.histplot(data['citric acid'],bins=20,kde=True)
+plt.title(' Distribution of Citric Acid')
+plt.subplot(2,3,4)
+sns.histplot(data['residual sugar'],bins=20,kde=True)
+plt.title(' Distribution of Residual Sugar')
+plt.subplot(2,3,5)
+sns.histplot(data['chlorides'],bins=20,kde=True)
+plt.title(' Distribution of Chlorides')
+plt.subplot(2,3,6)
+sns.histplot(data['alcohol'],bins=20,kde=True)
+plt.title(' Distribution of Alcohol')
+plt.tight_layout()
+plt.show()
+
+selected_features = ['fixed acidity', 'volatile acidity', 'citric acid', 'residual sugar', 'chlorides', 'alcohol', 'quality']
+sns.pairplot(data[selected_features], diag_kind='kde')
+plt.show()
+
+plt.figure(figsize=(10, 6))
+sns.boxplot(x='quality', y='pH', data=data, color='violet')
+plt.title('Boxplot of Quality vs. pH Content')
+plt.show()
+
+data['quality'] = data['quality'].astype(str)
+plt.figure(figsize=(10, 8))
+sns.violinplot(x="quality", y="alcohol", data=data, palette={
+               '3': 'lightcoral', '4': 'lightblue', '5': 'lightgreen', '6': 'gold', '7': 'lightskyblue', '8': 'lightpink'}, alpha=0.7)
+plt.title('Violin Plot for Quality and Alcohol')
+plt.xlabel('Quality')
+plt.ylabel('Alcohol')
+plt.show()
+
+plt.figure(figsize=(12, 10))
+correlation_matrix = data.corr()
+sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', fmt='.2f', vmin=-1, vmax=1)
+plt.title('Correlation Matrix')
+plt.show()
+
