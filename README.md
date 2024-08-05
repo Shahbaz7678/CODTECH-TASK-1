@@ -1,4 +1,5 @@
 # CODTECH-TASK-1
+
 **Name:** Shahbaz Haider
 **Company:** CODTECH IT SOLUTIONS 
 **ID:** CT12DS2050
@@ -16,7 +17,7 @@ The objective of this project is to perform exploratory data analysis on the Win
 ### Key Activities 
 1. Data Exploration: Collecting the data and understanding the same.
 2. Data Cleaning: Removing and updating the data according to the problem addressed.
-3. Data Pre-Processing and Insights: Understanding the different parameters of the data and finding valuable trens and distributions.
+3. Data Pre-Processing and Insights: Understanding the different parameters of the data and finding valuable trends and distributions.
 4. Data Visualisation: Visualising the insights for a better understanding.
 
 ### Technologies Used 
